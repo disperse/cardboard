@@ -2,7 +2,7 @@ package pairs.client.phaser
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.`|`
 import org.scalajs.dom.html
 
 @js.native
@@ -42,6 +42,10 @@ abstract class State extends js.Object {
   def preload(): Unit = js.native
 
   def create(): Unit = js.native
+
+  def update(): Unit = js.native
+
+  def render(): Unit = js.native
 }
 
 @js.native
@@ -49,6 +53,8 @@ abstract class State extends js.Object {
 class Loader extends js.Object {
   def image(key: String, url: String = js.native,
       overwrite: Boolean = false): this.type = js.native
+  def audio(key: String, url: String = js.native,
+            autoDecode: Boolean = true): this.type = js.native
 }
 
 @js.native
@@ -58,6 +64,9 @@ class GameObjectFactory(game: Game) extends js.Object {
       key: String = js.native): Sprite = js.native
 
   def graphics(x: Double = 0, y: Double = 0): Graphics = js.native
+
+  def audio(key: String, volume: Double = 1,
+            loop: Boolean = false, connect: Boolean = true): Sound = js.native
 }
 
 @js.native
@@ -97,6 +106,14 @@ class Graphics protected () extends js.Object {
   def beginFill(color: Int): Unit = js.native
   def endFill(): Unit = js.native
   def drawPolygon(path: js.Array[PointLike]): Unit = js.native
+}
+
+@js.native
+@JSName("Phaser.Sound")
+class Sound protected () extends js.Object {
+  def play(marker: String = "", position: Double = 0,
+           volume: Double = 1, loop: Boolean = false,
+           forceRestart: Boolean = true ) = js.native
 }
 
 @ScalaJSDefined

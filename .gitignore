@@ -1,4 +1,7 @@
-target/
+target
+.idea
+project
+scala-2.11
 .cache
 .cache-main
 .classpath

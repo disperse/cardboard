@@ -23,12 +23,14 @@ class GameState extends State {
   private var scoreGraphics: Graphics = null
 
   override def preload(): Unit = {
+    load.audio("beep", "assets/sound.wav")
     load.image("back", "assets/back.png")
     for (i <- 0 to 9)
       load.image(i.toString(), s"assets/$i.png")
   }
 
   override def create(): Unit = {
+    val beep = game.add.audio("beep")
     val allCards =
       for (i <- 0 to 9; _ <- 1 to 2) yield i // two copies of each card
     val shuffledCards = scala.util.Random.shuffle(allCards)
@@ -48,7 +50,7 @@ class GameState extends State {
       // Setup click event
       val square = new Square(row, col, card, front, back)
       back.inputEnabled = true
-      back.events.onInputDown.add((sprite: Sprite) => doClick(square))
+      back.events.onInputDown.add((sprite: Sprite) => doClick(square, beep))
     }
 
     scoreText = game.asInstanceOf[js.Dynamic].add.text(
@@ -58,7 +60,7 @@ class GameState extends State {
     scoreGraphics = game.add.graphics(660, 50)
   }
 
-  private def doClick(square: Square): Unit = {
+  private def doClick(square: Square, beep: Sound): Unit = {
     (firstClick, secondClick) match {
       case (None, _) =>
         // First click of a pair
@@ -66,6 +68,7 @@ class GameState extends State {
 
       case (Some(first), None) if first.card == square.card =>
         // Found a pair
+        beep.play()
         firstClick = None
         score += 50
 
