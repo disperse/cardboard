@@ -4,18 +4,19 @@ val commonSettings = Seq(
   scalacOptions ++= Seq("-deprecation", "-feature", "-encoding", "utf-8")
 )
 
-lazy val `pairs-client` = project.in(file("client")).
+lazy val `cardboard-client` = project.in(file("client")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings).
   settings(
     libraryDependencies ++= Seq(
-      "org.scala-js" %%% "scalajs-dom" % "0.8.1"
+      "org.scala-js" %%% "scalajs-dom" % "0.8.1",
+      "com.lihaoyi" %%% "scalatags" % "0.5.4"
     ),
     persistLauncher in Compile := false,
     persistLauncher in Test := false
   )
 
-lazy val `pairs-server` = project.in(file("server")).
+lazy val `cardboard-server` = project.in(file("server")).
   settings(commonSettings).
   settings(Revolver.settings).
   settings(
