@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Wayne's Dream - New</title>
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-div {
+            outline: 3px solid black;
+            margin: 0;
+            width: 85%;
+            height: 70%;
+            float: left;
+            overflow: scroll;
+        }
+
+        #status {
+            outline: 3px solid black;
+            margin: 0;
+            width: 15%;
+            height: 70%;
+            float: right;
+        }
+
+        #cards {
+            outline: 3px solid black;
+            clear: both;
+            margin: 0;
+            width: 100%;
+            height: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map-div">
+        <canvas id="canvas"/>
+    </div>
+    <div id="status"></div>
+    <div id="cards"></div>
+    <script type="application/javascript" src="/js/pairs-client-fastopt.js"></script>
+    <script type="application/javascript" src="/js/pairs-client-launcher.js"></script>
+    <script>
+        pairs.client.PairsClient().main(document.getElementById('canvas'));
+    </script>
+</body>
+</html>

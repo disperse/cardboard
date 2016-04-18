@@ -1,4 +1,4 @@
-package pairs.client.phaser
+package cardboard.client.phaser
 
 import scala.scalajs.js
 import js.annotation._
@@ -10,6 +10,7 @@ object Phaser extends js.Object {
   val AUTO: Int = js.native
 }
 
+
 @js.native
 @JSName("Phaser.Game")
 class Game(
@@ -19,6 +20,7 @@ class Game(
     parent: String | html.Element = "") extends js.Object {
 
   val state: StateManager = js.native
+  val camera: Camera = js.native
 
   val add: GameObjectFactory = js.native
 }
@@ -56,6 +58,7 @@ class Loader extends js.Object {
   def audio(key: String, url: String = js.native,
             autoDecode: Boolean = true): this.type = js.native
 }
+
 
 @js.native
 @JSName("Phaser.GameObjectFactory")
@@ -114,6 +117,12 @@ class Sound protected () extends js.Object {
   def play(marker: String = "", position: Double = 0,
            volume: Double = 1, loop: Boolean = false,
            forceRestart: Boolean = true ) = js.native
+}
+
+@js.native
+@JSName("Phaser.Camera")
+class Camera protected() extends js.Object {
+
 }
 
 @ScalaJSDefined

@@ -1,6 +1,6 @@
 target
 .idea
-project
+project/project
 scala-2.11
 .cache
 .cache-main

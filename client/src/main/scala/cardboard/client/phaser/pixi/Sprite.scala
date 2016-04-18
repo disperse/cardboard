@@ -1,4 +1,4 @@
-package pairs.client.phaser.pixi
+package cardboard.client.phaser.pixi
 
 import scala.scalajs.js
 import js.annotation._
@@ -8,6 +8,7 @@ import js.annotation._
 class Sprite protected () extends js.Object {
   var x: Double = js.native
   var y: Double = js.native
+  var scale: Double = js.native
 
   var visible: Boolean = js.native
 }
